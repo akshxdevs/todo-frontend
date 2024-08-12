@@ -16,10 +16,10 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Pull Image from Docker Hub
-        run: docker pull akshx09/todo-frontend:latest
+        run: docker pull ${{ secrets.DOCKER_USERNAME }}/todo-frontend:latest
 
       - name: Delete Old Container
         run: docker rm -f reactjs-app-container || true
 
       - name: Run Docker Container
-        run: docker run -d -p 3000:80 --name reactjs-app-container akshx09/todo-frontend:latest
+        run: docker run -d -p 3000:80 --name reactjs-app-container ${{ secrets.DOCKER_USERNAME }}/todo-frontend:latest
