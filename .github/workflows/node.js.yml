@@ -1,6 +1,6 @@
 name: Deploy React Application
 
-on: 
+on:
   push:
     branches:
       - main # Change to the branch you use for deployment
