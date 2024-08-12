@@ -1,4 +1,8 @@
 FROM node:alpine3.18 AS build
+
+ARG REACT_APP_NODE_ENV
+ARG REACT_APP_SERVER_BASE_URL
+
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
