@@ -18,10 +18,18 @@ jobs:
       - name: Pull Docker Image
         run: docker pull ${{ secrets.DOCKER_USERNAME }}/todo-frontend:latest
 
-      - name: Delete old container (if exists)
+      - name: Stop and Remove old Frontend Container
         run: |
           docker stop reactjs-app-container || true
           docker rm reactjs-app-container || true
 
-      - name: Run Docker Container
+      - name: Stop and Remove old Backend Container
+        run: |
+          docker stop backend-container || true
+          docker rm backend-container || true
+
+      - name: Run Frontend Container
         run: docker run -d -p 3000:80 --name reactjs-app-container ${{ secrets.DOCKER_USERNAME }}/todo-frontend:latest
+
+      - name: Run Backend Container
+        run: docker run -d -p 3001:3000 --name backend-container ${{ secrets.DOCKER_USERNAME }}/todo-backend:latest
