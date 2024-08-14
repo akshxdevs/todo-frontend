@@ -29,7 +29,7 @@ jobs:
           docker rm backend-container || true
 
       - name: Run Frontend Container
-        run: docker run -d -p 3000:80 --name reactjs-app-container ${{ secrets.DOCKER_USERNAME }}/todo-frontend:latest
+        run: docker run -d -p 4000:80 --name reactjs-app-container ${{ secrets.DOCKER_USERNAME }}/todo-frontend:latest
 
       - name: Run Backend Container
         run: docker run -d -p 3001:3000 --name backend-container ${{ secrets.DOCKER_USERNAME }}/todo-backend:latest
