@@ -14,7 +14,7 @@ export const Signup = () => {
             setshowError(true);
         }
         try {
-            const res = await axios.post("http://localhost:3000/signup",{
+            const res = await axios.post("http://13.236.193.198:3000/signup",{
                 name:name,
                 email:email,
                 passoword:passoword

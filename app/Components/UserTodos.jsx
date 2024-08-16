@@ -29,7 +29,7 @@ export const UserTodos = () => {
 
     const handleDone = async (todoid) => {
         try {
-            const res = await axios.put(`http://localhost:3000/todos/${todoid}`);
+            const res = await axios.put(`http://13.236.193.198:3000/todos/${todoid}`);
             setTodos(prevTodos => prevTodos.map(todo =>
                 todo._id === todoid ? { ...todo, done: true } : todo 
             ));
@@ -47,7 +47,7 @@ export const UserTodos = () => {
 
     const handleTodos = async () => {
         try {
-            const res = await axios.get(`http://localhost:3000/todos/${userid}`);
+            const res = await axios.get(`http://13.236.193.198:3000/todos/${userid}`);
             setTodos(res.data);
             setFilteredTodos(res.data);
             setShowTodos(true);
@@ -71,7 +71,7 @@ export const UserTodos = () => {
 
     const handleDeleteTodo = async (todoid) => {
         try {
-            const res = await axios.delete(`http://localhost:3000/todos/${todoid}`);
+            const res = await axios.delete(`http://13.236.193.198:3000/todos/${todoid}`);
             if (res.status === 200) {
                 setTodos(prevTodos => prevTodos.filter(todo => todo._id !== todoid));
                 setFilteredTodos(prevTodos => prevTodos.filter(todo => todo._id !== todoid));
@@ -87,7 +87,7 @@ export const UserTodos = () => {
 
     const handleCreateTodo = async () => {
         try {
-            const res = await axios.post(`http://localhost:3000/todos`, {
+            const res = await axios.post(`http://13.236.193.198:3000/todos`, {
                 title: newTodoTitle,
                 description: newTodoDescription,
                 dueDate: newDueDate,
@@ -115,7 +115,7 @@ export const UserTodos = () => {
 
     const handleEdittedTodos = async (todoid) => {
         try {
-            const res = await axios.put(`http://localhost:3000/edittodos/${todoid}`, {
+            const res = await axios.put(`http://13.236.193.198:3000/edittodos/${todoid}`, {
                 title: newTodoTitle,
                 description: newTodoDescription,
             });
