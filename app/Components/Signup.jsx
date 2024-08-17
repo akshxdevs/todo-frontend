@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Signup = () => {
     const [name,setName] = useState("");
@@ -40,11 +42,12 @@ export const Signup = () => {
             <input type="text" placeholder="name" onChange={(e)=>{setName(e.target.value)}}/>
             <input type="text" placeholder="email" onChange={(e)=>{setEmail(e.target.value)}}/>
             <input type="text" placeholder="password" onChange={(e)=>{setPassword(e.target.value)}}/>
-            <button type="submit">Login</button>
+            <button type="submit">signup</button>
             </form>
             {showError && (
                 <span>Please fill all required fields!!</span>
             )}
+            <ToastContainer />
         </div>
     );
 }
