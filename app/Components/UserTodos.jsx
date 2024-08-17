@@ -30,21 +30,20 @@ export const UserTodos = () => {
     const handleDone = async (todoid) => {
         try {
             const res = await axios.put(`http://13.236.193.198:3000/todos/${todoid}`);
-            setTodos(prevTodos => prevTodos.map(todo =>
-                todo._id === todoid ? { ...todo, done: true } : todo 
-            ));
-            if (res.status===200) {
-                toast.success("Marked done sucessfully!!")
-                window.location.reload();
-            }else{
-                toast.error("Error!!!404")
+            if (res.status === 200) {
+                setTodos(prevTodos => prevTodos.map(todo =>
+                    todo._id === todoid ? { ...todo, done: true } : todo 
+                ));
+                toast.success("Marked done successfully!!");
+            } else {
+                toast.error("Error!!!404");
             }
-            
         } catch (error) {
             console.error("Error updating todo:", error);
+            toast.error("An error occurred while updating the todo.");
         }
-    }
-
+    };
+    
     const handleTodos = async () => {
         try {
             const res = await axios.get(`http://13.236.193.198:3000/todos/${userid}`);
