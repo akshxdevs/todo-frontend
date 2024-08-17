@@ -18,6 +18,7 @@ export const Login = () => {
             setShowError(true);
             return;
         }
+        setShowError(false); 
         try {
             const res = await axios.post("http://13.236.193.198:3000/login", {
                 email: email,
@@ -44,8 +45,8 @@ export const Login = () => {
             <div className="login-form">
                 <form onSubmit={handleSubmit}>
                     <h1 className="title">Todo App</h1>
-                    <input type="text" placeholder="email" className="email" onChange={(e) => { setEmail(e.target.value) }} />
-                    <input type="password" placeholder="password" className="password"onChange={(e) => { setPassword(e.target.value) }} /> {/* Corrected input type */}
+                    <input type="email" placeholder="Email" className="email" onChange={(e) => { setEmail(e.target.value) }} /> 
+                    <input type="password" placeholder="Password" className="password" onChange={(e) => { setPassword(e.target.value) }} />
                     <button type="submit" className="login-btn">Login</button>
                     <p className="signup-link">Don't have an account? 
                         <Link style={{ color: "black" }} to="/signup"> Signup</Link>
@@ -53,7 +54,7 @@ export const Login = () => {
                 </form>
             </div>
             {showError && (
-                <span className="login-form">Please fill all fields!!</span>
+                <span className="error-message">Please fill all fields!!</span> 
             )}
             <ToastContainer />
         </div>
